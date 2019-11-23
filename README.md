@@ -8,6 +8,7 @@ Waypoint pages shows the list of waypoints with additional columns:
 - Distance: Distance between waypoints
 - Delta: Delta altitude between waypoints (ascent/descent)
 - Add. trkpt: Number additional trackpoints between Waypoints
+
 ![Waypoints](WPTdata.png)
 
 F5 reloads the flight plan. Double click on related tables opens waypoints or POIs.
