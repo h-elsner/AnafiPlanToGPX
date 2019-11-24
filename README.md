@@ -1,5 +1,5 @@
 # AnafiPlanToGPX
-Application to convert Parrot Anafi JSON flight plan files to GPX files inspect it by map services.
+Application to convert Parrot Anafi JSON flight plan files to GPX files to inspect it by map services.
 
 Info page shows meta data and multiple points like POI rfom the flight plan
 ![Meta data](Metadata.png)
