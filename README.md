@@ -19,4 +19,3 @@ Hints will help you if mouse pointer hovers over a control.
 Notes: 
 - Additional trackpoints between waypoints will only be visible in the GPX file.
 - It's not possible to edit waypoints or POIs with this application.
-
