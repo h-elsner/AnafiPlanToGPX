@@ -1,0 +1,51 @@
+Request: Dietrich Boege <boege@gmx.org>
+
+Das Programm dient zur Umwandlung von Parrot Anafi Flugplänen im JSON-Format in GPX-Dateien zur Darstellung auf Kartendiensten.
+
+Der Flugplan im JSON-Format wird als Datei geöffnet und ausgewertet. Details werden tabellarisch dargestellt. Sie können nicht editiert werden. Jede göffnete Datei wird automatisch ins GPX-Format konvertiert. Die GPX Dateien werden automatisch da gespeichert, wo auch die JSON Flugpläne sind.
+Um die Dateien leichter zu finden, öffnet ein Doppelklick auf die Statuszeile den Dateiexplorer mit dem betreffenden Verzeichnis.
+
+Zwischen den Waypoints können zusätzliche Trackpunkte eingefügt werden. Diese sind linear interpoliert. Bei der Höhe mag das ja ganz gut sein, für die Koordinaten ist das Ganze etwas fragwürdig.
+
+Mit F5 wird die gleiche Datei neu geladen, z.B. wenn man die Einstellungen verändert hat.
+Mit STRG+C kann man den Inhalt der aktiven Tabelle in die Zwischenablage kopieren.
+Hilfe zur Bedienung erhältst du, wenn du den Mauszeiger über dem betreffenden Element hälst.
+
+In der Tabelle der Waypoints sind drei zusätzliche Spalten:
+-	Abstand: Strecke zwischen den Waypoints
+-	Delta: Höhenunterschied zwischen den Waypoints
+-	Zus. Trkpt: Anzahl zusätzlicher Trackpoints zwischen den Waypoints.
+Die Tabelle zeigt also, was zu erwarten wäre. Die zusätzlichen Trackpoints stehen allerdings nur in der GPX-Datei. Sie werden im Programm nicht angezeigt.
+
+Die Waypoints können mit Doppelklick auf die entsprechende Zeile in GoogleMaps angezeigt werden.
+Genauso können die POIs mit Doppelklick auf die entsprechende Tabelle der Info-Seite angezeigt werden.
+
+----------------------------------------
+
+# AnafiPlanToGPX
+Application to convert Parrot Anafi JSON flight plan files to GPX files for map services.
+
+Info page shows meta data and multiple points like POI rfom the flight plan
+![Meta data](Metadata.png)
+
+GPX files will be automatically stored in the folder where the JSON flight plan is.
+
+Waypoint pages shows the list of waypoints with additional columns:
+- Distance: Distance between waypoints
+- Delta: Delta altitude between waypoints (ascent/descent)
+- Add. trkpt: Number additional trackpoints between Waypoints
+
+![Waypoints](WPTdata.png)
+
+F5 reloads the flight plan. Double click on related tables opens waypoints or POIs.
+Hints will help you if mouse pointer hovers over a control.
+
+Notes: 
+- Additional trackpoints between waypoints will only be visible in the GPX file.
+- It's not possible to edit waypoints or POIs with this application.
+
+
+
+
+
+
