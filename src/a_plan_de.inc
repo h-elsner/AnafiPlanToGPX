@@ -15,9 +15,11 @@ resourcestring                                     {english}
   hntMetaGrid='Metadaten aus dem Flugplan';
   hntPOIgrid='Verschiedene Punkte  aus dem Flugplan';
   hntWPgrid='Liste der Waypoints aus dem Flugplan';
-  capTrkpt='Zus. trackpoints';
-  hntTrkpt='Zusätzliche trackpiots zwischen den Wayppoints einfügen (linear interpoliert)';
+  capTrkpt='Zus. Trackpoints';
+  hntTrkpt='Zusätzliche Trackpoints zwischen den Wayppoints einfügen (linear interpoliert)';
   capRate='Rate der zusätzlichen TRKPT';
   hntRate='Rate  Trackpoints (geringere Werte bedeuten mehr Punkte)';
 
   rsContact='Kontakt';
+
+

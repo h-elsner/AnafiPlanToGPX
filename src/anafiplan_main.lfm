@@ -221,10 +221,9 @@ object Form1: TForm1
     Height = 23
     Top = 12
     Width = 63
-    MaxValue = 8
     MinValue = 1
     TabOrder = 5
-    Value = 4
+    Value = 10
   end
   object lblRate: TLabel
     Left = 336

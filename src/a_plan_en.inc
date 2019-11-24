@@ -16,7 +16,7 @@ resourcestring                                     {english}
     hntPOIgrid='Multiple points from flight plan';
     hntWPgrid='List of waypoints from flight plan';
     capTrkpt='Add. trackpoints';
-    hntTrkpt='Create additional trackpiots between the waypoints (linear interpolated)';
+    hntTrkpt='Create additional trackpoints between the waypoints (linear interpolated)';
     capRate='Rate of additional trkpt';
     hntRate='Rate of additional trackpoints (less rate means more points)';
 

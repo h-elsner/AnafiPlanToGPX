@@ -108,6 +108,8 @@ History:
 0.1  2019-11-20 Proof of concept, no functionality
 0.2  2019-11-22 Funktionalität, volle Auswertung der bekannten Werte
 0.3  2019-11-23 Linear interpolated trackpoints between waypoints
+1.0  2019-11-24 Number additional trkpt according delta
+                altidude and distance (3D), results in more trackpoints.
 
 *)
 
@@ -122,9 +124,9 @@ uses
   Grids, fpjson, jsonparser, dateutils, lclintf, StdCtrls, Spin, XMLPropStorage,
   math;
 
-{$I a_plan_en.inc}                                  {Include a language file}
+{.$I a_plan_en.inc}                                  {Include a language file}
 {.$I a_plan_es.inc}
-{.$I a_plan_de.inc}
+{$I a_plan_de.inc}
 
 type
 
@@ -410,7 +412,7 @@ var inf: TFileStream;
     i, k, numt, zhl: integer;
     GPXlist, WPlist: TStringList;
     lati, longi, alti, nme, anafi, swert: string;
-    fwert, lat01, lon01, lat02, lon02, alt01, alt02: double;
+    fwert, lat01, lon01, lat02, lon02, alt01, alt02, hdelta: double;
     tme: TDateTime;
 
   procedure NeueZeile(ogrid: TStringGrid; pname, pwert: string);
@@ -580,8 +582,11 @@ begin
                 fwert:=DeltaKoord(lat01, lon01, lat02, lon02);  {Distance}
                 WPGrid.Cells[11, WPGrid.RowCount-1]:=FormatFloat(frmKurz, fwert);
                 WPGrid.Cells[12, WPGrid.RowCount-1]:=FormatFloat(frmKurz, alt02-alt01);
- {Einfügen von zusätzlichen interpolierten Trackpunkten}
-                numt:=round(abs(alt02-alt01)) div speRate.Value;
+
+ {Insert additional trackpoints, linear interplated. Rate according settings and
+  sqrt(delta_altitude²+distance²).}
+                hdelta:=alt02-alt01;
+                numt:=round(sqrt((hdelta*hdelta)+(fwert*fwert))) div speRate.Value;
                 if numt>1 then begin               {Create additional trkpt}
                   WPGrid.Cells[13, WPGrid.RowCount-1]:=IntToStr(numt-1);
                   if cbTrkpt.Checked then begin
@@ -591,7 +596,7 @@ begin
                              GPXlon+
                              FormatFloat(frmCoord, ((lon02-lon01)/numt*k)+lon01)+
                              '"> <ele>'+
-                             FormatFloat(frmKurz, ((alt02-alt01)/numt*k)+alt01)+
+                             FormatFloat(frmKurz, ((hdelta)/numt*k)+alt01)+
                              '</ele> </trkpt>',',', '.', [rfReplaceAll]);
                       GPXlist.Add(swert);
                       inc(zhl);
