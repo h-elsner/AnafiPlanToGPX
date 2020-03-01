@@ -124,9 +124,10 @@ uses
   Grids, fpjson, jsonparser, dateutils, lclintf, StdCtrls, Spin, XMLPropStorage,
   math;
 
-{.$I a_plan_en.inc}                                  {Include a language file}
+{$I a_plan_en.inc}                                  {Include a language file}
 {.$I a_plan_es.inc}
-{$I a_plan_de.inc}
+{.$I a_plan_fr.inc}
+{.$I a_plan_de.inc}
 
 type
 
