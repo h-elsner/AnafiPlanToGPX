@@ -13,9 +13,9 @@ object Form1: TForm1
   OnDblClick = FormDblClick
   OnKeyUp = FormKeyUp
   Position = poDefaultPosOnly
-  SessionProperties = 'cbTrkpt.Checked;Height;OpenDialog1.FileName;speRate.Value;Width;PageControl1.ActivePage'
+  SessionProperties = 'cbTrkpt.Checked;Height;OpenDialog1.FileName;PageControl1.ActivePage;speRate.Value;Width'
   ShowHint = True
-  LCLVersion = '2.0.4.0'
+  LCLVersion = '2.0.10.0'
   object btnClose: TBitBtn
     Left = 613
     Height = 30
@@ -74,6 +74,7 @@ object Form1: TForm1
     Top = 8
     Width = 123
     Caption = 'Open'
+    Default = True
     Glyph.Data = {
       36030000424D3603000000000000360000002800000010000000100000000100
       1800000000000003000064000000640000000000000000000000FFFFFFFFFFFF
@@ -128,9 +129,9 @@ object Form1: TForm1
     Height = 472
     Top = 48
     Width = 814
-    ActivePage = pMeta
+    ActivePage = pWaypoints
     Anchors = [akTop, akLeft, akRight, akBottom]
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 3
     object pMeta: TTabSheet
       Caption = 'Info'
@@ -142,7 +143,7 @@ object Form1: TForm1
         Top = 0
         Width = 308
         Anchors = [akTop, akRight, akBottom]
-        Color = clCream
+        Color = clDefault
         ColCount = 2
         FixedCols = 0
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goDblClickAutoSize, goSmoothScroll]
@@ -160,7 +161,7 @@ object Form1: TForm1
         Top = 0
         Width = 426
         Anchors = [akTop, akLeft, akRight, akBottom]
-        Color = clCream
+        Color = clDefault
         ColCount = 2
         FixedCols = 0
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goDblClickAutoSize, goSmoothScroll]
@@ -182,7 +183,7 @@ object Form1: TForm1
         Top = 0
         Width = 806
         Align = alClient
-        Color = clCream
+        Color = clDefault
         ColCount = 14
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goDblClickAutoSize, goSmoothScroll]
         TabOrder = 0
@@ -214,6 +215,7 @@ object Form1: TForm1
     Top = 14
     Width = 60
     Caption = 'cbTrkpt'
+    OnClick = cbTrkptClick
     TabOrder = 4
   end
   object speRate: TSpinEdit
@@ -235,12 +237,12 @@ object Form1: TForm1
   end
   object OpenDialog1: TOpenDialog
     Filter = 'JSON plan file|*.JSON|all files|*.*'
-    left = 552
-    top = 8
+    Left = 552
+    Top = 8
   end
   object XMLPropStorage1: TXMLPropStorage
     StoredValues = <>
-    left = 456
-    top = 8
+    Left = 456
+    Top = 8
   end
 end

@@ -150,16 +150,17 @@ type
     XMLPropStorage1: TXMLPropStorage;
     procedure btnCloseClick(Sender: TObject);
     procedure btnOpenClick(Sender: TObject);
+    procedure cbTrkptClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDblClick(Sender: TObject);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormKeyUp(Sender: TObject; var Key: Word);
     procedure MetaGridKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure POIgridDblClick(Sender: TObject);
     procedure POIgridKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure StatusBar1DblClick(Sender: TObject);
     procedure WPgridDblClick(Sender: TObject);
     procedure WPgridKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure WPgridSelection(Sender: TObject; aCol, aRow: Integer);
+    procedure WPgridSelection(Sender: TObject; aRow: Integer);
   private
     procedure OpenPlanFile;
   public
@@ -169,7 +170,7 @@ type
 const
   appName='AnafiPlanToGPX';
   appvers='1.0';
-  appbuild='2019-11-24';
+  appbuild='2020-03-07';
   mymail='helmut.elsner@live.com';
   tab1=' ';
   tab2='  ';
@@ -278,7 +279,7 @@ Test-3566 : 0.1 von 48.86739 9.366313 48.86739  9.366315
 Test-3567 : Nan von 48.86739 9.366315 48.86739  9.366315
 Test-3568 : 0.5 von 48.86739 9.366315 48.867386 9.366317
 }
-function DeltaKoord(lat1, lon1, lat2, lon2: double): double;
+function DeltaKoord(lat1, lon1, lat2, lon2: double): double; inline;
 begin
   result:=0;
   try
@@ -337,7 +338,7 @@ begin
   ShowAbout;
 end;
 
-procedure TForm1.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TForm1.FormKeyUp(Sender: TObject; var Key: Word);
 begin
   if key=vk_F5 then
     OpenPlanFile;;                                 {Reload}
@@ -397,7 +398,7 @@ begin
     WPGrid.CopyToClipboard(false);                 {Ctrl+C copy to clipboard}
 end;
 
-procedure TForm1.WPgridSelection(Sender: TObject; aCol, aRow: Integer);
+procedure TForm1.WPgridSelection(Sender: TObject; aRow: Integer);
 begin
   WPGrid.Tag:=aRow;                                {store the Selection for onclick}
 end;
@@ -416,7 +417,7 @@ var inf: TFileStream;
     fwert, lat01, lon01, lat02, lon02, alt01, alt02, hdelta: double;
     tme: TDateTime;
 
-  procedure NeueZeile(ogrid: TStringGrid; pname, pwert: string);
+  procedure NeueZeile(ogrid: TStringGrid; pname, pwert: string); inline;
   begin
     oGrid.RowCount:=oGrid.RowCount+1;
     oGrid.Cells[0, oGrid.RowCount-1]:=pname;
@@ -676,6 +677,12 @@ procedure TForm1.btnOpenClick(Sender: TObject);    {Open one JSON flight plan fi
 begin
   if OpenDialog1.Execute then
     OpenPlanFile;
+end;
+
+procedure TForm1.cbTrkptClick(Sender: TObject);    {Deactivate rate if additional
+                                                    trackpoint are not used}
+begin
+  speRate.Enabled:=cbTrkpt.Checked;
 end;
 
 end.
